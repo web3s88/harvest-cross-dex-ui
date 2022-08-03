@@ -110,8 +110,8 @@ export default function CurrencyInputPanel({
   // }, [chainId])
 
   return (
-    <div id={id} className={classNames(hideInput ? 'p-4' : 'p-5', 'rounded bg-whitesmoke')}>
-      <div className="flex flex-col justify-between space-y-3 sm:space-y-0 sm:flex-row items-center">
+    <div id={id} className={classNames(hideInput ? 'p-4' : 'p-5', 'rounded bg-whitesmoke swap-header-innerbox')}>
+      <div className="flex flex-col items-center justify-between space-y-3 sm:space-y-0 sm:flex-row">
         <div className={classNames('flex items-center')}>
           <button
             type="button"
@@ -149,19 +149,19 @@ export default function CurrencyInputPanel({
                   {pair?.token0.symbol}:{pair?.token1.symbol}
                 </span>
               ) : (
-                <div className="flex flex-1 flex-col items-start justify-center mx-3">
+                <div className="flex flex-col items-start justify-center flex-1 mx-3">
                   {label && <div className="text-xs font-medium text-secondary whitespace-nowrap">{label}</div>}
                   <div className="flex items-center">
                     <div className="text-lg font-bold token-symbol-container md:text-xl">
                       {(currency && currency.symbol && currency.symbol.length > 20
                         ? currency.symbol.slice(0, 4) +
-                          '...' +
-                          currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
+                        '...' +
+                        currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
                         : currency?.symbol) || (
-                        <div className="px-2 py-1 mt-1 text-xs font-medium bg-transparent border rounded-full hover:bg-primary border-low-emphesis text-secondary whitespace-nowrap ">
-                          {i18n._(t`Select a token`)}
-                        </div>
-                      )}
+                          <div className="px-2 py-1 mt-1 text-xs font-medium bg-transparent border rounded-full hover:bg-primary border-low-emphesis text-secondary whitespace-nowrap ">
+                            {i18n._(t`Select a token`)}
+                          </div>
+                        )}
                     </div>
 
                     {!disableCurrencySelect && currency && (
@@ -175,8 +175,8 @@ export default function CurrencyInputPanel({
         </div>
         {toChainId && (
           <Listbox value={toChainId} onChange={onChainSelect}>
-            <div className="relative p-1 z-10">
-              <Listbox.Button className="relative flex border rounded border-gray-600 text-sm bg-white currency-network">
+            <div className="relative z-10 p-1">
+              <Listbox.Button className="relative flex text-sm bg-white border border-gray-600 rounded currency-network">
                 <Image
                   src={NETWORK_ICON[toChainId]}
                   alt="Switch Network"
@@ -184,7 +184,7 @@ export default function CurrencyInputPanel({
                   width="32px"
                   height="32px"
                 />
-                <span className="block truncate pl-1">{networks[toChainId]}</span>
+                <span className="block pl-1 truncate">{networks[toChainId]}</span>
                 <span className="absolute inset-y-0 right-0 flex items-center pointer-events-none">
                   <SelectorIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
                 </span>
@@ -254,7 +254,7 @@ export default function CurrencyInputPanel({
               />
               {!hideBalance && currency && selectedCurrencyBalance ? (
                 <div className="flex flex-col">
-                  <div onClick={onMax} className="text-xs font-medium text-right cursor-pointer text-low-emphesis absolute right-2 top-0">
+                  <div onClick={onMax} className="absolute top-0 text-xs font-medium text-right cursor-pointer text-low-emphesis right-2">
                     {renderBalance ? (
                       renderBalance(selectedCurrencyBalance)
                     ) : (
@@ -263,7 +263,7 @@ export default function CurrencyInputPanel({
                       </>
                     )}
                   </div>
-                  <div className="absolute right-2 bottom-0">
+                  <div className="absolute bottom-0 right-2">
                     <FiatValue fiatValue={fiatValue} priceImpact={priceImpact} />
                   </div>
                 </div>

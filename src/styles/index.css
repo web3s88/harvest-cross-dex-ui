@@ -147,3 +147,39 @@ button:not([disabled]):hover {
   opacity: 0.7;
 }
 
+.bg-color{
+  background-color: #c8995d;
+}
+.bg-button-color{
+    background: #a74d06;
+    border: 2px solid white;
+    color: #fff;
+    border-radius: 0.625rem;
+}
+
+.header-logo img{
+  background:white;
+}
+.swap-header-box {
+    border: 4px solid #a25e0f;
+    /* color: black; */
+    background-color: black;
+}
+.swap-header-innerbox {
+border: 4px solid #a25e0f;
+background-color: #baa58a;
+}
+.bg-gradient-button-colour {
+  background-image: linear-gradient(to right top, #ddb665, #d5a961, #cc9d5e, #c2915a, #b88657);
+  border: unset;
+  color: white;
+}
+
+.font-color-white {
+  color:white
+}
+.bg-button-color-network{
+  background-color: #a74d06;
+  color: white;
+  border: none;
+}

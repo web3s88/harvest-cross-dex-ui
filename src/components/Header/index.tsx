@@ -17,6 +17,7 @@ import Web3Status from '../Web3Status'
 import { t } from '@lingui/macro'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { useETHBalances } from '../../state/wallet/hooks'
+import Button from "../Button";
 import { useLingui } from '@lingui/react'
 
 // import { ExternalLink, NavLink } from "./Link";
@@ -34,9 +35,9 @@ function AppBar(): JSX.Element {
       <Popover as="nav" className="z-10 w-full bg-transparent header-border-b">
         {({ open }) => (
           <>
-            <div className="px-4 py-4">
+            <div className="px-4 py-4 bg-color" >
               <div className="flex items-center justify-between">
-                <div className="flex items-center">
+                <div className="flex items-center header-logo">
                   <Image src="/logo.png" alt="Harvest" width="160px" height="46px" />
                   <div className="hidden sm:block sm:ml-4">
                     <div className="flex space-x-2 header-nav">
@@ -109,14 +110,23 @@ function AppBar(): JSX.Element {
                       {/*)}*/}
 
                       <NavLink href={'/cross-swap'}>
-                        <a id={`stake-nav-link`} className="p-2 text-baseline text-primary md:p-3 whitespace-nowrap">
+                        {/* <a id={`stake-nav-link`} className="p-2 text-baseline text-primary md:p-3 whitespace-nowrap">
                           {i18n._(t`CrossSwap`)}
-                        </a>
+                        </a> */}
+                        <Button
+                          id="stake-nav-link"
+                          variant="outlined"
+                          color={"primary"}
+                          className={"bg-button-color"}
+                          size={"sm"}
+                        >
+                          {i18n._(t`CrossSwap`)}
+                        </Button>
                       </NavLink>
 
                       <ExternalLink
                         href="https://harvestcapswap.com/"
-                        className="p-2 text-baseline text-primary md:p-3 whitespace-nowrap"
+                        className="p-2 text-baseline text-primary md:p-3 whitespace-nowrap bg-button-color"
                       >
                         HARVESTSWAP BSC DEX
                       </ExternalLink>
@@ -277,10 +287,10 @@ function AppBar(): JSX.Element {
                       </div>
                     )}
 
-                    <div className="w-auto flex items-center rounded bg-brown-connect hover:bg-opacity-80 p-0.5 whitespace-nowrap text-sm font-bold cursor-pointer select-none pointer-events-auto">
+                    <div className="w-auto flex items-center rounded bg-brown-connect hover:bg-opacity-80 p-0.5 whitespace-nowrap text-sm font-bold cursor-pointer select-none pointer-events-auto bg-button-color">
                       {account && chainId && userEthBalance && (
                         <>
-                          <div className="px-3 py-2 text-primary text-bold">
+                          <div className="px-3 py-2 text-bold font-color-white ">
                             {userEthBalance?.toSignificant(4)} {NATIVE[chainId].symbol}
                           </div>
                         </>
