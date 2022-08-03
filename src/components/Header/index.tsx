@@ -287,7 +287,7 @@ function AppBar(): JSX.Element {
                       </div>
                     )}
 
-                    <div className="w-auto flex items-center rounded bg-brown-connect hover:bg-opacity-80 p-0.5 whitespace-nowrap text-sm font-bold cursor-pointer select-none pointer-events-auto bg-button-color">
+                    <div className="w-auto flex items-center rounded bg-brown-connect hover:bg-opacity-80 p-0.5 whitespace-nowrap text-sm font-bold cursor-pointer select-none pointer-events-auto">
                       {account && chainId && userEthBalance && (
                         <>
                           <div className="px-3 py-2 text-bold font-color-white ">

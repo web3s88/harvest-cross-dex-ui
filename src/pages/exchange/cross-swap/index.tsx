@@ -71,7 +71,7 @@ import { classNames, computeFiatValueCrossPriceImpact, tryParseAmount } from '..
 import { computeFiatValuePriceImpact } from '../../../functions/trade'
 import confirmPriceImpactWithoutFee from '../../../features/exchange-v1/swap/confirmPriceImpactWithoutFee'
 import { maxAmountSpend } from '../../../functions/currency'
-import swapArrowsAnimationData from '../../../animation/swap-arrows.json'
+import swapArrowsAnimationData from '../../../animation/arrow.json'
 import { t } from '@lingui/macro'
 import { useActiveWeb3React } from '../../../hooks/useActiveWeb3React'
 import useENSAddress from '../../../hooks/useENSAddress'
