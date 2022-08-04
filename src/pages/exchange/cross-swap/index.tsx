@@ -71,7 +71,7 @@ import { classNames, computeFiatValueCrossPriceImpact, tryParseAmount } from '..
 import { computeFiatValuePriceImpact } from '../../../functions/trade'
 import confirmPriceImpactWithoutFee from '../../../features/exchange-v1/swap/confirmPriceImpactWithoutFee'
 import { maxAmountSpend } from '../../../functions/currency'
-import swapArrowsAnimationData from '../../../animation/swap-arrows.json'
+import swapArrowsAnimationData from '../../../animation/arrow.json'
 import { t } from '@lingui/macro'
 import { useActiveWeb3React } from '../../../hooks/useActiveWeb3React'
 import useENSAddress from '../../../hooks/useENSAddress'
@@ -289,13 +289,13 @@ export default function CrossSwap() {
     () =>
       showWrap
         ? {
-            [Field.INPUT]: parsedAmount,
-            [Field.OUTPUT]: parsedAmount,
-          }
+          [Field.INPUT]: parsedAmount,
+          [Field.OUTPUT]: parsedAmount,
+        }
         : {
-            [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
-            [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount,
-          },
+          [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
+          [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount,
+        },
     [independentField, parsedAmount, showWrap, trade]
   )
 
@@ -306,8 +306,8 @@ export default function CrossSwap() {
         independentField2 === Field.OUTPUT
           ? parsedAmount2
           : currencies2[Field.INPUT]?.equals(currencies2[Field.OUTPUT])
-          ? parsedAmount2
-          : v2Trade2?.outputAmount,
+            ? parsedAmount2
+            : v2Trade2?.outputAmount,
     }),
     [independentField2, parsedAmount2, currencies2, v2Trade2]
   )
@@ -391,9 +391,9 @@ export default function CrossSwap() {
 
   const userHasSpecifiedInputOutput = Boolean(
     currencies[Field.INPUT] &&
-      currencies[Field.OUTPUT] &&
-      parsedAmounts[independentField]?.greaterThan(JSBI.BigInt(0)) &&
-      !currencies[Field.INPUT].equals(currencies[Field.OUTPUT])
+    currencies[Field.OUTPUT] &&
+    parsedAmounts[independentField]?.greaterThan(JSBI.BigInt(0)) &&
+    !currencies[Field.INPUT].equals(currencies[Field.OUTPUT])
   )
 
   const routeNotFound = !trade?.route
@@ -635,7 +635,7 @@ export default function CrossSwap() {
         onConfirm={handleConfirmTokenWarning}
       />
       <DoubleGlowShadow>
-        <div className="p-4 space-y-4 bg-white rounded z-1">
+        <div className="p-4 space-y-4 bg-white rounded z-1 swap-header-box ">
           {/*<SwapHeader*/}
           {/*  input={currencies[Field.INPUT]}*/}
           {/*  output={currencies[Field.OUTPUT]}*/}
@@ -679,10 +679,10 @@ export default function CrossSwap() {
               >
                 <button
                   className="z-10 -mt-6 -mb-6 rounded-full"
-                  // onClick={() => {
-                  //   setApprovalSubmitted(false) // reset 2 step UI for approvals
-                  //   onSwitchTokens()
-                  // }}
+                // onClick={() => {
+                //   setApprovalSubmitted(false) // reset 2 step UI for approvals
+                //   onSwitchTokens()
+                // }}
                 >
                   <div className="rounded-full bg-green-connect p-3px">
                     <div
@@ -819,15 +819,15 @@ export default function CrossSwap() {
                 {i18n._(t`Unsupported Asset`)}
               </Button>
             ) : !account ? (
-              <Web3Connect size="lg" color="blue" className="w-full" />
+              <Web3Connect size="lg" color="blue" className="w-full bg-gradient-button-colour" />
             ) : showWrap ? (
               <Button color="green" size="lg" disabled={Boolean(wrapInputError)} onClick={onWrap}>
                 {wrapInputError ??
                   (wrapType === WrapType.WRAP
                     ? i18n._(t`Wrap`)
                     : wrapType === WrapType.UNWRAP
-                    ? i18n._(t`Unwrap`)
-                    : null)}
+                      ? i18n._(t`Unwrap`)
+                      : null)}
               </Button>
             ) : routeNotFound && userHasSpecifiedInputOutput ? (
               <div style={{ textAlign: 'center' }}>
@@ -871,6 +871,7 @@ export default function CrossSwap() {
                       width: '100%',
                     }}
                     id="swap-button"
+                    className="bg-gradient-button-colour"
                     disabled={
                       !isValid ||
                       approvalState !== ApprovalState.APPROVED ||
@@ -882,8 +883,8 @@ export default function CrossSwap() {
                     {priceImpactSeverity > 3 && !isExpertMode
                       ? i18n._(t`Price Impact High`)
                       : priceImpactSeverity > 2
-                      ? i18n._(t`Swap Anyway`)
-                      : i18n._(t`Swap`)}
+                        ? i18n._(t`Swap Anyway`)
+                        : i18n._(t`Swap`)}
                   </ButtonError>
                 )}
               </div>
@@ -891,6 +892,7 @@ export default function CrossSwap() {
               <ButtonError
                 onClick={handleSwap}
                 id="swap-button"
+                className="bg-gradient-button-colour"
                 disabled={
                   !isValid ||
                   (priceImpactSeverity > 3 && !isExpertMode) ||
@@ -902,10 +904,10 @@ export default function CrossSwap() {
                 {swapInputError
                   ? swapInputError
                   : priceImpactSeverity > 3 && !isExpertMode
-                  ? i18n._(t`Price Impact Too High`)
-                  : priceImpactSeverity > 2
-                  ? i18n._(t`Swap Anyway`)
-                  : i18n._(t`Swap`)}
+                    ? i18n._(t`Price Impact Too High`)
+                    : priceImpactSeverity > 2
+                      ? i18n._(t`Swap Anyway`)
+                      : i18n._(t`Swap`)}
               </ButtonError>
             )}
             {showApproveFlow && (
@@ -922,9 +924,9 @@ export default function CrossSwap() {
         </div>
       </DoubleGlowShadow>
       <div className="mt-6">
-        <TableHeading className="font-bold">My Cross History</TableHeading>
+        <TableHeading className="font-bold font-color-white ">My Cross History</TableHeading>
         <TableWrapper>
-          <HistoryTable className="w-full">
+          <HistoryTable className="w-full bg-color">
             <thead>
               <tr>
                 <th>From</th>
